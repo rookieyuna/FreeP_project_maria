@@ -17,37 +17,22 @@
   		
   	</select>  	
   	
-  	<select id="listPage" resultType="review.ReviewBoardDTO">
-  		
-  		SELECT * FROM (
-		    SELECT Tb.*, rownum rNum FROM (
-		        SELECT * FROM reviewboard ORDER BY rv_idx DESC
-		    ) Tb
-		)
-		WHERE rNum BETWEEN #{param1} AND #{param2}	
+  	<select id="listPage" resultType="review.ReviewBoardDTO">	
+		 select * from reviewboard 	order by rv_idx desc Limit #{param1}, #{param2}
   	</select>
   	
   	<select id="listMyPage" resultType="review.ReviewBoardDTO" parameterType="util.ParameterDTO">
-  		SELECT * FROM (
-		    SELECT Tb.*, rownum rNum FROM (
-		        SELECT * FROM reviewboard 
-		        WHERE m_code=#{m_code}
-		        ORDER BY rv_idx DESC
-		    ) Tb
-		)
-		WHERE rNum BETWEEN #{start} AND #{end}
+		select * from reviewboard WHERE m_code=#{m_code} order by rv_idx desc Limit #{param1}, #{param2}
   	</select>
   	
   	
-  	<select id="listBest" resultType="review.ReviewBoardDTO">
-  		select * from(
-			select rv_idx, m_code, title, contents, writer, postdate, hits, rv_ofile1, rv_sfile1, rv_ofile2, rv_sfile2, rv_ofile3, rv_sfile3, or_idx, rv_best, rownum rNum from(
-			select 
+  	<select id="listBest" resultType="review.ReviewBoardDTO">		
+					select 
 			    count(*) rank, rv_idx, R.m_code, title, contents, writer, postdate, hits, rv_ofile1, rv_sfile1, rv_ofile2, rv_sfile2, rv_ofile3, rv_sfile3, or_idx, rv_best
 			from reviewboard R 
 			    inner join likedreview L using(rv_idx) 
 			group by rv_idx, R.m_code, title, contents, writer, postdate, hits, rv_ofile1, rv_sfile1, rv_ofile2, rv_sfile2, rv_ofile3, rv_sfile3, or_idx, rv_best
-			order by rank desc)) WHERE rNum BETWEEN #{param1} AND #{param2}
+			order by rank DESC LIMIT #{param1}, #{param2};
   	</select>
   	
   	
@@ -59,19 +44,12 @@
   		</if>
   	</select>
   	
-	<select id="listPageSearch" resultType="review.ReviewBoardDTO" parameterType="util.ParameterDTO">
-
-		SELECT * FROM (
-		SELECT Tb.*, rownum rNum FROM (
-		SELECT * FROM reviewboard 
-			<if test="searchTxt!=null and !searchTxt.equals('')">
+	<select id="listPageSearch" resultType="review.ReviewBoardDTO" parameterType="util.ParameterDTO">		
+		SELECT * FROM reviewboard 			
+				<if test="searchTxt!=null and !searchTxt.equals('')">
 				WHERE ${searchField} like '%'||#{searchTxt}||'%'
 			</if>
-
-				ORDER BY rv_idx DESC
-			) Tb
-		)
-		WHERE rNum BETWEEN #{start} AND #{end}
+				ORDER BY rv_idx DESC LIMIT #{start}, #{end}
 		
 	</select>
   	
@@ -81,8 +59,8 @@
   	
   	
   	<insert id="write" parameterType="review.ReviewBoardDTO">
-  		INSERT into reviewboard(rv_idx, m_code, title, contents, writer, rv_ofile1, rv_sfile1,rv_ofile2, rv_sfile2,rv_ofile3, rv_sfile3, or_idx) 
-  		VALUES (seq_reviewboard_idx.nextval, #{m_code}, #{title}, #{contents}, #{writer},#{rv_ofile1}, #{rv_sfile1},#{rv_ofile2}, #{rv_sfile2},#{rv_ofile3}, #{rv_sfile3}, #{or_idx} )
+  		INSERT into reviewboard( m_code, title, contents, writer, rv_ofile1, rv_sfile1,rv_ofile2, rv_sfile2,rv_ofile3, rv_sfile3, or_idx) 
+  		VALUES ( #{m_code}, #{title}, #{contents}, #{writer},#{rv_ofile1}, #{rv_sfile1},#{rv_ofile2}, #{rv_sfile2},#{rv_ofile3}, #{rv_sfile3}, #{or_idx} )
   	</insert>
 
   	<select  id="findm_code" resultType="int">
@@ -136,7 +114,7 @@
 	<!--좋아요 리뷰 테이블 추가 및 삭제 메서드 JYA-->
 	
 	<insert id="likeReview" parameterType="review.LikedReviewDTO">
-  		INSERT INTO likedreview values (seq_likedreview_idx.nextval, #{rv_idx}, #{m_code})
+  		INSERT INTO likedreview(rv_idx, m_code) values (#{rv_idx}, #{m_code})
   	</insert>
   	
   	<delete id="dislikeReview" parameterType="review.LikedReviewDTO">
@@ -149,19 +127,12 @@
   	</select>  	
   	
   	<select id="listMyFavPage" resultType="review.ReviewBoardDTO" parameterType="util.ParameterDTO">
-		SELECT * FROM(
-		    SELECT Tb.*, rownum rNum FROM (
-		        SELECT *
-		            FROM reviewboard
+			 SELECT * FROM reviewboard
 		            WHERE rv_idx IN (
 		                SELECT rv_idx
 		                    FROM likedreview
 		                    WHERE m_code = #{m_code}
-		        )
-		    )Tb
-		)WHERE rNum 
-		BETWEEN #{start} AND #{end} 
-		ORDER BY rv_idx DESC
+		                    ) ORDER BY rv_idx DESC LIMIT #{start}, #{end}
   	</select>
 
 	<select id="likeChk" resultType="int" parameterType="review.LikedReviewDTO">
