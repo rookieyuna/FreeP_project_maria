@@ -14,7 +14,7 @@
 	<select id="listPage" resultType="store.StorechartVO" parameterType="util.ParameterDTO">
 	 
 		SELECT s.b_code, b_name, sum(cp_price) cp_price,
-			sum(po_price) po_price, sum(total_price) total_price, DATE_FORMAT(STR_TO_DATE(or_date), '%Y-%m')
+			sum(po_price) po_price, sum(total_price) total_price, DATE_FORMAT(STR_TO_DATE(or_date, '%Y-%m'), '%Y-%m')
 	    	FROM store s LEFT JOIN ordered o ON s.b_code=o.b_code
 				<if test="yearMonth!=null and !locations.equals('')" >
 				WHERE DATE_FORMAT(or_date,'%Y-%m') = #{yearMonth}
@@ -70,7 +70,7 @@
 						AND address like '%제주%'
 					</if>
 				</if> 
-	    	GROUP BY s.b_code, b_name, to_char(DATE_FORMAT(or_date), '%Y-%m')
+	    	GROUP BY s.b_code, b_name,  DATE_FORMAT(STR_TO_DATE(or_date, '%Y-%m'), '%Y-%m')
 	       		ORDER BY b_code
 	       		
     </select>
