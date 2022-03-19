@@ -16,22 +16,13 @@
   	
   	<select id="listPage" resultType="board.BoardDTO">
   		
-  		SELECT * FROM (
-		    SELECT Tb.*, rownum rNum FROM (
-		        SELECT * FROM board where b_cate=#{param1} ORDER BY b_idx DESC
-		    ) Tb
-		)
-		WHERE rNum BETWEEN #{param2} AND #{param3}	
+		SELECT * FROM board where b_cate=#{param1} 
+			ORDER BY b_idx DESC LIMIT #{param2} , #{param3}
   	</select>
   	
   	<select id="listQuPage" resultType="board.BoardDTO">
-  		SELECT * FROM (
-		    SELECT Tb.*, rownum rNum FROM (
-		        SELECT * FROM board where b_cate=3 AND m_code=#{m_code} 
-		        ORDER BY b_idx DESC
-		    ) Tb
-		)
-		WHERE rNum BETWEEN #{start} AND #{end}	
+	        SELECT * FROM board where b_cate=3 AND m_code=#{m_code} 
+		        ORDER BY b_idx DESC LIMIT #{start} , #{end}	
   	</select>
   	
   	
@@ -45,17 +36,11 @@
   	</select>
 	<select id="listPageSearch" resultType="board.BoardDTO" parameterType="board.ParameterDTO">
 
-		SELECT * FROM (
-		SELECT Tb.*, rownum rNum FROM (
 		SELECT * FROM board where b_cate=#{cate}
 			<if test="searchTxt!=null and !searchTxt.equals('')">
 				AND ${searchField} like '%'||#{searchTxt}||'%'
 			</if>
-
-				ORDER BY b_idx DESC
-			) Tb
-		)
-		WHERE rNum BETWEEN #{start} AND #{end}
+		ORDER BY b_idx DESC LIMIT #{start} , #{end}
 		
 	</select>
   	
@@ -63,13 +48,13 @@
   
   	<insert id="write" parameterType="board.BoardDTO">
   		INSERT into board(b_idx, m_code, b_cate, title, contents, writer, ofile, sfile, q_category) 
-  		VALUES (seq_board_num.nextval, #{m_code}, #{b_cate}, #{title}, #{contents}, #{writer},#{ofile}, #{sfile}, #{q_category})
+  		VALUES (#{m_code}, #{b_cate}, #{title}, #{contents}, #{writer},#{ofile}, #{sfile}, #{q_category})
   	</insert>
   	
   	<!-- 이벤트 글쓰기 -->
   	<insert id="writeEvent" parameterType="board.BoardDTO">
   		INSERT into board(b_idx, m_code, b_cate, title, contents, writer, ofile, sfile, ofile2, sfile2, q_category) 
-  		VALUES (seq_board_num.nextval, #{m_code}, #{b_cate}, #{title}, #{contents}, #{writer},#{ofile}, #{sfile}, #{ofile2}, #{sfile2}, #{q_category})
+  		VALUES (#{m_code}, #{b_cate}, #{title}, #{contents}, #{writer},#{ofile}, #{sfile}, #{ofile2}, #{sfile2}, #{q_category})
   	</insert>
   	
   	<select  id="findm_code" resultType="int">
@@ -120,17 +105,13 @@
   	</update>
   	
   	<select id="titlepre" resultType="board.BoardDTO" parameterType="int">
-  		SELECT * FROM (
-    SELECT Tb.*, rownum rNum from 
-        (SELECT B_IDX, title FROM board WHERE b_idx<![CDATA[<]]>#{param1} and b_cate=#{param2} order by b_idx desc) Tb)
-	WHERE rNum=1
+        SELECT B_IDX, title FROM board WHERE b_idx<![CDATA[<]]>
+        	#{param1} and b_cate=#{param2} order by b_idx desc
   	</select>
   	
   	<select id="titlenext" resultType="board.BoardDTO" parameterType="int">
-  		SELECT * FROM (
-    SELECT Tb.*, rownum rNum FROM 
-        (SELECT B_IDX, title FROM board WHERE b_idx<![CDATA[>]]>#{param1} and b_cate=#{param2} order by b_idx asc) Tb)
-	WHERE rNum=1
+        SELECT B_IDX, title FROM board 
+        WHERE b_idx<![CDATA[>]]>#{param1} and b_cate=#{param2} order by b_idx asc
   	</select>
   	
   </mapper>

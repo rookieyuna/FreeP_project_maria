@@ -50,7 +50,7 @@ public class BoardController {
 		
 		//해당 페이지에 출력할 게시물의 구간을 계산한다. 
 		int start = (nowPage-1) * pageSize + 1;
-		int end = pageSize * nowPage;
+		int end = 8;
 
 		ArrayList<BoardDTO> lists =
 			sqlSession.getMapper(BoardDAOImpl.class).listPage(1, start, end);
@@ -95,7 +95,7 @@ public class BoardController {
 		
 		//해당 페이지에 출력할 게시물의 구간을 계산한다. 
 		int start = (nowPage-1) * pageSize + 1;
-		int end = pageSize * nowPage;
+		int end = 8;
 
 		parameterDTO.setStart(start);
 		parameterDTO.setEnd(end); 

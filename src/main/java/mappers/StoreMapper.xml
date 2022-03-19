@@ -8,28 +8,23 @@
 
 	<select id="getTotalCount" resultType="int" parameterType="util.ParameterDTO">
 	   SELECT COUNT(*) FROM store
-	   <if test="searchTxt!=null and !searchTxt.equals('')">
-	      WHERE ${searchField} LIKE '%'||#{searchTxt}||'%'
-	   </if>
+		   <if test="searchTxt!=null and !searchTxt.equals('')">
+		      WHERE ${searchField} LIKE '%'||#{searchTxt}||'%'
+		   </if>
 	</select>
 
 	<select id="listPage" resultType="store.StoreVO" parameterType="util.ParameterDTO">
-	SELECT * FROM (
-	      SELECT Tb.*, rownum rNum From (
-	         SELECT * FROM store 
+	     SELECT * FROM store 
 	         <if test="searchTxt!=null and !searchTxt.equals('')">
 	            WHERE ${searchField} like '%'||#{searchTxt}||'%'
 	         </if>
-	         ORDER BY b_code DESC
-	      ) Tb
-	   )
-	   WHERE rNum BETWEEN #{start} AND #{end}
+	         ORDER BY b_code DESC LIMIT #{start} , #{end}
 	</select>
 	
 	<insert id="regist" parameterType="store.StoreVO">
 		INSERT INTO store(b_code, b_name, address,latitude, longitude, phone)	
 		VALUES
-		(seq_store_idx.nextval, #{b_name}, #{address}, #{latitude}, #{longitude}, #{phone})
+		( #{b_name}, #{address}, #{latitude}, #{longitude}, #{phone})
 	</insert>
 	
 	<select id="view" resultType="store.StoreVO" parameterType="util.ParameterDTO">
