@@ -51,10 +51,10 @@
 	<delete id="delete">
 		DELETE FROM ordered WHERE or_idx=#{or_idx}
 	</delete>
-	
+	 
 	<select id="checkidx" resultType="int">
-		 SELECT LAST_INSERT_ID()
-	</select>
+		 SELECT or_idx FROM ordered ORDER BY or_idx DESC LIMIT 1
+	</select> 
 	
 	
 	
