@@ -71,8 +71,8 @@
   	
   	<!-- 회원가입시 가입축하쿠폰 자동적립. -->
   	<insert id="coupon" parameterType="member.MemberVO">
-  		INSERT INTO mycoupon (coupon_idx, m_code, cp_idx)
-		    VALUES(seq_coupon_idx.nextval, (SELECT m_code FROM member WHERE id = #{id}), '1')
+  		INSERT INTO mycoupon (m_code, cp_idx)
+		    VALUES((SELECT m_code FROM member WHERE id = #{id}), '1')
   	</insert>
   	
   	<!-- 아이디 중복체크 -->
