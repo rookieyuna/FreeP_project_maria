@@ -22,7 +22,7 @@
 	</select>
 	
 	<insert id="regist" parameterType="Franchise.FransVO">
-		INSERT INTO store(f_code, f_email, f_name, f_phone, f_address, f_content, f_state)	
+		INSERT INTO store(f_email, f_name, f_phone, f_address, f_content, f_state)	
 		VALUES
 		(#{f_email}, #{f_name}, #{f_phone}, #{f_address}, #{f_content}, #{f_state})
 	</insert>
@@ -46,8 +46,8 @@
 	</delete>
 	
 	<insert id="write" parameterType="Franchise.FransVO">
-  		INSERT into Franchise(f_code, f_name, f_phone, f_email, f_address, f_content) 
-  		VALUES (seq_fran_idx.nextval, #{f_name}, #{f_phone}, #{f_email}, #{f_address}, #{f_content})
+  		INSERT into Franchise(f_name, f_phone, f_email, f_address, f_content) 
+  		VALUES ( #{f_name}, #{f_phone}, #{f_email}, #{f_address}, #{f_content})
   	</insert>
 
 </mapper>

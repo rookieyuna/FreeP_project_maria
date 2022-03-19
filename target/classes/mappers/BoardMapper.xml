@@ -47,13 +47,13 @@
   	
   
   	<insert id="write" parameterType="board.BoardDTO">
-  		INSERT into board(b_idx, m_code, b_cate, title, contents, writer, ofile, sfile, q_category) 
+  		INSERT into board( m_code, b_cate, title, contents, writer, ofile, sfile, q_category) 
   		VALUES (#{m_code}, #{b_cate}, #{title}, #{contents}, #{writer},#{ofile}, #{sfile}, #{q_category})
   	</insert>
   	
   	<!-- 이벤트 글쓰기 -->
   	<insert id="writeEvent" parameterType="board.BoardDTO">
-  		INSERT into board(b_idx, m_code, b_cate, title, contents, writer, ofile, sfile, ofile2, sfile2, q_category) 
+  		INSERT into board(m_code, b_cate, title, contents, writer, ofile, sfile, ofile2, sfile2, q_category) 
   		VALUES (#{m_code}, #{b_cate}, #{title}, #{contents}, #{writer},#{ofile}, #{sfile}, #{ofile2}, #{sfile2}, #{q_category})
   	</insert>
   	

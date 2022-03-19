@@ -20,8 +20,8 @@
   	</select>
   	
   	<insert id="write" parameterType="coupon.CouponVO">
-  		insert into coupon(cp_idx, cp_name, cp_cate, cp_price, cp_const, issue_date, expire_date)
-  	 VALUES (seq_cp_idx.nextval, #{cp_name}, #{cp_cate}, #{cp_price}, #{cp_const}, 
+  		insert into coupon( cp_name, cp_cate, cp_price, cp_const, issue_date, expire_date)
+  	 VALUES ( #{cp_name}, #{cp_cate}, #{cp_price}, #{cp_const}, 
    STR_TO_DATE(#{issue_date},'%m-%d-%Y'),STR_TO_DATE(#{expire_date},'%m-%d-%Y')
    )
   	</insert>

@@ -22,7 +22,7 @@
 	</select>
 	
 	<insert id="regist" parameterType="store.StoreVO">
-		INSERT INTO store(b_code, b_name, address,latitude, longitude, phone)	
+		INSERT INTO store( b_name, address,latitude, longitude, phone)	
 		VALUES
 		( #{b_name}, #{address}, #{latitude}, #{longitude}, #{phone})
 	</insert>
