@@ -55,7 +55,7 @@
 				VALUES (#{g_code}, nextval(sq_side), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
 			<if test='g_code =="6"'>
-				VALUES (#{g_code},nextval(sq_drink), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code}, nextval(sq_drink), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
   	</insert>
 
@@ -123,16 +123,16 @@
 
 	<insert id="insertCartDiy" parameterType="java.util.HashMap">
 		INSERT INTO DIY(
-		            G_CODE, 
+		            G_CODE, diy_idx,
 		            DOUGH, SAUCE, TOPPING1, TOPPING2, TOPPING3, TOPPING4, TOPPING5, 
 		            D_NAME, D_PRICE
 		        )VALUES( 
-		            9,
+		            9, nextval(sq_diy_idx),
 		            #{dough}, #{sauce}, #{topping1}, #{topping2, jdbcType=INTEGER}, #{topping3, jdbcType=INTEGER}, #{topping4, jdbcType=INTEGER}, #{topping5, jdbcType=INTEGER},
 		            #{d_name}, #{d_price}
 				)
 		<selectKey keyProperty="diy_idx" resultType="Integer" order="AFTER">
-			SELECT sq_diy_idx.CURRVAL FROM DUAL
+			SELECT  lastval(sq_diy_idx)			
 		</selectKey>
 
   	</insert>
