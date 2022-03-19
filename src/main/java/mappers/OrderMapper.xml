@@ -18,8 +18,8 @@
   	</select>
   
   	<insert id="productInsert" parameterType="order.OrderDTO">
-  		insert into order_product(op_idx, or_idx, code, p_count, p_price)
-	values(SEQ_OP_IDX.nextval, #{or_idx}, #{code}, #{p_count} ,#{p_price})
+  		insert into order_product( or_idx, code, p_count, p_price)
+	values( #{or_idx}, #{code}, #{p_count} ,#{p_price})
   	</insert>
   	
   	<update id="updatePoint" >

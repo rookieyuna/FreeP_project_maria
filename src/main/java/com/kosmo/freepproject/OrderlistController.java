@@ -43,7 +43,8 @@ public class OrderlistController {
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
 		int start = (nowPage-1) * pageSize +1;
-		int end = nowPage * pageSize;
+		/* int end = nowPage * pageSize; */
+		int end = 8;
 		
 		//위에서 계산한 게시물의 구간 start, end를 DTO에 저장
 		parameterDTO.setStart(start);

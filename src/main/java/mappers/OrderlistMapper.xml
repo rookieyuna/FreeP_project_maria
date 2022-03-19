@@ -15,24 +15,19 @@
 	
 	
 	<select id="listPage" resultType="orderlist.OrderlistVO" parameterType="util.ParameterDTO">
-	SELECT * FROM (
-	      SELECT Tb.*, rownum rNum From (
-	         SELECT * FROM ordered 
+		select * from ordered 
 	         <if test="searchTxt!=null and !searchTxt.equals('')">
 	            WHERE ${searchField} like '%'||#{searchTxt}||'%'
 	         </if>
-	         ORDER BY or_idx DESC
-	      ) Tb
-	   )
-	   WHERE rNum BETWEEN #{start} AND #{end}
+	   	order by or_idx desc Limit #{start}, #{end}
 	</select>
 	
 	
 	 <insert id="insertOrder" parameterType="orderlist.OrderlistVO">
-		INSERT INTO ordered (or_idx, m_code, b_code, origin_price, cp_price,
+		INSERT INTO ordered ( m_code, b_code, origin_price, cp_price,
 		 po_price, total_price, credit,name,phone,request, orderhow, pickup_time)
 		VALUES
-		(seq_or_idx.nextval, #{m_code}, #{b_code}, #{origin_price}, #{cp_price}, 
+		( #{m_code}, #{b_code}, #{origin_price}, #{cp_price}, 
 		#{po_price}, #{total_price}, #{credit},#{name},#{phone},#{request} ,#{orderhow}, #{pickup_time})
 	</insert>
 	
@@ -58,7 +53,7 @@
 	</delete>
 	
 	<select id="checkidx" resultType="int">
-		 SELECT LAST_NUMBER FROM USER_SEQUENCES  WHERE SEQUENCE_NAME = 'SEQ_OR_IDX'
+		 SELECT LAST_INSERT_ID()
 	</select>
 	
 	

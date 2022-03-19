@@ -174,6 +174,7 @@ public class OrderController {
 		
 		//ordered테이블에 삽입
 		sqlSession.getMapper(OrderlistImpl.class).insertOrder(dto);
+		int flag = sqlSession.getMapper(OrderlistImpl.class).checkidx(); 
 		//member테이블에서 적립금 사용한거만큼 감소
 		sqlSession.getMapper(OrderImpl.class).updatePoint(Integer.parseInt(req.getParameter("point")), m_code);
 		
@@ -182,9 +183,9 @@ public class OrderController {
 			sqlSession.getMapper(OrderImpl.class).deleteMyCoupon(Integer.parseInt(req.getParameter("couponidx")));
 		}
 		
-		int flag = sqlSession.getMapper(OrderlistImpl.class).checkidx(); 
-		flag -= 1;
 		
+		/* flag -= 1; */
+		System.out.println("flag"+flag);
 		//order_product테이블에 삽입
 		String[] code = (String[]) req.getParameterValues("ctCode");
 		String[] cartIdx = (String[]) req.getParameterValues("cartIdx");
