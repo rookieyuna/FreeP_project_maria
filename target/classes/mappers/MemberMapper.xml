@@ -14,16 +14,9 @@
 	   </if>
 	</select>
 	
-	<!-- 마리아db버전
+	<!-- 오라클db버전
 	<select id="listPage" resultType="member.MemberVO" parameterType="member.ParameterDTO">
-	   SELECT * FROM member WHERE grade=#{grade}
-         <if test="searchTxt!=null and !searchTxt.equals('')">
-            AND ${searchField} LIKE '%'||#{searchTxt}||'%'
-         </if>
-         ORDER BY m_code ASC LIMIT #{start}, #{end}
-	</select> -->
-	<select id="listPage" resultType="member.MemberVO" parameterType="util.ParameterDTO">
-	SELECT * FROM (
+	   SELECT * FROM (
 	      SELECT Tb.*, rownum rNum From (
 	         SELECT * FROM member 
 	         WHERE grade=#{grade}
@@ -34,24 +27,34 @@
 	      ) Tb
 	   )
 	   WHERE rNum BETWEEN #{start} AND #{end}
+	</select> -->
+	
+	<select id="listPage" resultType="member.MemberVO" parameterType="util.ParameterDTO">
+	
+	   SELECT * FROM member WHERE grade=#{grade}
+         <if test="searchTxt!=null and !searchTxt.equals('')">
+            AND ${searchField} LIKE '%'||#{searchTxt}||'%'
+         </if>
+         ORDER BY m_code ASC LIMIT #{start}, #{end}
+	   
 	</select>
 	
 	
 	<!-- @Param 어노테이션에서 지정한 별칭을 사용하여 인파라미터를 처리 -->
 	<insert id="regist">
-		INSERT INTO member (m_code, id, name, pass, phone, email, grade)
+		INSERT INTO member (id, name, pass, phone, email, grade)
 		VALUES
-		(seq_member_num.nextval, #{_id}, #{_name}, #{_pass}, #{_phone}, #{_email}, #{_grade})
+		(#{_id}, #{_name}, #{_pass}, #{_phone}, #{_email}, #{_grade})
 	</insert>
 	
 	<!-- 관리자 말고 메인 회원가입 -->
 	<insert id="regAction" parameterType="member.MemberVO">
-  		INSERT into member(m_code, id, name, pass, phone, email, zipcode, address )
-				VALUES (seq_member_num.nextval, #{id}, #{name}, #{pass}, #{phone}, #{email}, #{zipcode}, #{address})
+  		INSERT into member(id, name, pass, phone, email, zipcode, address )
+				VALUES (#{id}, #{name}, #{pass}, #{phone}, #{email}, #{zipcode}, #{address})
   	</insert>
 	<insert id="regkakaoAction" parameterType="member.MemberVO">
-  		INSERT into member(m_code, id, name, pass, phone, email, zipcode, address,grade )
-				VALUES (seq_member_num.nextval, #{id}, #{name}, #{pass}, #{phone}, #{email}, #{zipcode}, #{address},5)
+  		INSERT into member(id, name, pass, phone, email, zipcode, address,grade )
+				VALUES (#{id}, #{name}, #{pass}, #{phone}, #{email}, #{zipcode}, #{address},5)
   	</insert>
   	
   	<!-- 카카오 정보 찾기 -->

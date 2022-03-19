@@ -144,7 +144,7 @@ public class MypageController {
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
 		int start = (nowPage-1) * pageSize +1;
-		int end = nowPage * pageSize;
+		int end = 8;
 		
 		dto.setStart(start);
 		dto.setEnd(end);
@@ -180,7 +180,7 @@ public class MypageController {
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
 		int start = (nowPage-1) * pageSize +1;
-		int end = nowPage * pageSize;
+		int end = 8;
 		
 		dto.setStart(start);
 		dto.setEnd(end);

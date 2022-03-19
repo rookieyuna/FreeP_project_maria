@@ -37,14 +37,10 @@
 	
 	
 	<select id="orderlist" resultType="orderlist.OrderlistVO" parameterType="util.ParameterDTO">
-	SELECT * FROM (
-	      SELECT Tb.*, rownum rNum From (
-	         SELECT * FROM ordered 
-	         WHERE m_code=#{m_code}
-	         ORDER BY or_idx DESC
-	      ) Tb
-	   )
-	   WHERE rNum BETWEEN #{start} AND #{end}
+        SELECT * FROM ordered WHERE m_code=#{m_code}
+         	ORDER BY or_idx DESC LIMIT #{start}, #{end}
+
+	   
 	   
 	<!-- SELECT * FROM (
 	      SELECT Tb.*, DENSE_RANK() OVER(order by or_idx) rNum From (
@@ -99,28 +95,20 @@
 	
 	<!-- 쿠폰내역(페이징) -->
 	<select id="couponlist" resultType="coupon.CouponVO" parameterType="util.ParameterDTO">
-		SELECT * FROM (
-		  SELECT Tb.*, rownum rNum From (
-		     SELECT * FROM coupon 
-		     INNER JOIN mycoupon USING(cp_idx)
-		     WHERE m_code=#{m_code}
-		     ORDER BY expire_date ASC
-		  ) Tb
-		)
-		WHERE rNum BETWEEN #{start} AND #{end}
+
+     SELECT * FROM coupon 
+	     INNER JOIN mycoupon USING(cp_idx)
+	     WHERE m_code=#{m_code}
+	     ORDER BY expire_date ASC
+		 LIMIT #{start}, #{end}
 	</select>
 
 
 	<!-- 포인트 내역 -->
 	<select id="pointlist" resultType="point.PointVO" parameterType="util.ParameterDTO">
-	SELECT * FROM (
-      SELECT total_price*0.1 save_point, po_price, or_date, rownum rNum From (
-         SELECT * FROM ordered 
+      SELECT total_price*0.1 save_point, po_price, or_date FROM ordered 
          WHERE m_code=#{m_code}
-         ORDER BY or_idx DESC
-      ) Tb
-    )
-    WHERE rNum BETWEEN #{start} AND #{end}
+         ORDER BY or_idx DESC LIMIT #{start}, #{end}
 	</select>
 	
 	<!-- 회원가입일 -->
