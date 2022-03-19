@@ -106,12 +106,12 @@
   	
   	<select id="titlepre" resultType="board.BoardDTO" parameterType="int">
         SELECT B_IDX, title FROM board WHERE b_idx<![CDATA[<]]>
-        	#{param1} and b_cate=#{param2} order by b_idx desc
+        	#{param1} and b_cate=#{param2} order by b_idx desc LIMIT 1
   	</select>
   	
   	<select id="titlenext" resultType="board.BoardDTO" parameterType="int">
         SELECT B_IDX, title FROM board 
-        WHERE b_idx<![CDATA[>]]>#{param1} and b_cate=#{param2} order by b_idx asc
+        WHERE b_idx<![CDATA[>]]>#{param1} and b_cate=#{param2} order by b_idx asc LIMIT 1
   	</select>
   	
   </mapper>
