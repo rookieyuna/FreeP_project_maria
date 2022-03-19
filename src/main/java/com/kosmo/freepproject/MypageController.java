@@ -79,7 +79,7 @@ public class MypageController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
+		int start = (nowPage-1) * pageSize;
 		int end = nowPage * pageSize;
 		
 		dto.setStart(start);
@@ -143,7 +143,7 @@ public class MypageController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
+		int start = (nowPage-1) * pageSize;
 		int end = 8;
 		
 		dto.setStart(start);
@@ -179,7 +179,7 @@ public class MypageController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
+		int start = (nowPage-1) * pageSize;
 		int end = 8;
 		
 		dto.setStart(start);
@@ -223,8 +223,8 @@ public class MypageController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
-		int end = nowPage * pageSize;
+		int start = (nowPage-1) * pageSize;
+		int end = 8;
 		
 		dto.setStart(start);
 		dto.setEnd(end);
@@ -266,8 +266,8 @@ public class MypageController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
-		int end = nowPage * pageSize;
+		int start = (nowPage-1) * pageSize;
+		int end = 8;
 		
 		dto.setStart(start);
 		dto.setEnd(end);
@@ -308,8 +308,8 @@ public class MypageController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
-		int end = nowPage * pageSize;
+		int start = (nowPage-1) * pageSize;
+		int end = 8;
 		
 		dto.setStart(start);
 		dto.setEnd(end);

@@ -52,7 +52,7 @@ public class MemberController {
 				: Integer.parseInt(req.getParameter("nowPage"));
 		String grade = parameterDTO.getGrade();
 
-		int start = (nowPage - 1) * pageSize + 1;
+		int start = (nowPage - 1) * pageSize;
 		int end = 8;
 
 		// 위에서 계산한 게시물의 구간 start, end를 DTO에 저장
