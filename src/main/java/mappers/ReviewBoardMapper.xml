@@ -22,7 +22,7 @@
   	</select>
   	
   	<select id="listMyPage" resultType="review.ReviewBoardDTO" parameterType="util.ParameterDTO">
-		select * from reviewboard WHERE m_code=#{m_code} order by rv_idx desc Limit #{param1}, #{param2}
+		select * from reviewboard WHERE m_code=#{m_code} order by rv_idx desc Limit #{start}, #{end}
   	</select>
   	
   	
@@ -32,7 +32,7 @@
 			from reviewboard R 
 			    inner join likedreview L using(rv_idx) 
 			group by rv_idx, R.m_code, title, contents, writer, postdate, hits, rv_ofile1, rv_sfile1, rv_ofile2, rv_sfile2, rv_ofile3, rv_sfile3, or_idx, rv_best
-			order by rank DESC LIMIT #{param1}, #{param2};
+			order by rank DESC LIMIT #{param1}, #{param2}
   	</select>
   	
   	
