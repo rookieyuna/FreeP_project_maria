@@ -16,19 +16,13 @@
   	</select> 
   	
   	<select id="listPage" resultType="coupon.CouponVO">
-  		
-  		SELECT * FROM (
-		    SELECT Tb.*, rownum rNum FROM (
-		        SELECT * FROM coupon ORDER BY cp_idx DESC
-		    ) Tb
-		)
-		WHERE rNum BETWEEN #{param1} AND #{param2}	
+        SELECT * FROM coupon ORDER BY cp_idx DESC  LIMIT #{param1} , #{param2}	
   	</select>
   	
   	<insert id="write" parameterType="coupon.CouponVO">
   		insert into coupon(cp_idx, cp_name, cp_cate, cp_price, cp_const, issue_date, expire_date)
   	 VALUES (seq_cp_idx.nextval, #{cp_name}, #{cp_cate}, #{cp_price}, #{cp_const}, 
-   to_date(#{issue_date},'MM-DD-YYYY'),to_date(#{expire_date},'MM-DD-YYYY')
+   STR_TO_DATE(#{issue_date},'%m-%d-%Y'),STR_TO_DATE(#{expire_date},'%m-%d-%Y')
    )
   	</insert>
   	

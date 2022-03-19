@@ -14,22 +14,17 @@
 	</select>
 
 	<select id="listPage" resultType="Franchise.FransVO" parameterType="util.ParameterDTO">
-	SELECT * FROM (
-	      SELECT Tb.*, rownum rNum From (
-	         SELECT * FROM franchise 
+         SELECT * FROM franchise 
 	         <if test="searchTxt!=null and !searchTxt.equals('')">
 	            WHERE ${searchField} like '%'||#{searchTxt}||'%'
 	         </if>
-	         ORDER BY f_code DESC
-	      ) Tb
-	   )
-	   WHERE rNum BETWEEN #{start} AND #{end}
+	         ORDER BY f_code DESC LIMIT #{start} , #{end}
 	</select>
 	
 	<insert id="regist" parameterType="Franchise.FransVO">
 		INSERT INTO store(f_code, f_email, f_name, f_phone, f_address, f_content, f_state)	
 		VALUES
-		(seq_fran_idx.nextval, #{f_email}, #{f_name}, #{f_phone}, #{f_address}, #{f_content}, #{f_state})
+		(#{f_email}, #{f_name}, #{f_phone}, #{f_address}, #{f_content}, #{f_state})
 	</insert>
 	
 	<select id="view" resultType="Franchise.FransVO" parameterType="util.ParameterDTO">
