@@ -68,7 +68,7 @@ public class MenuController {
 		String g_code = parameterDTO.getG_code();
 		
 		//해당 페이지에 출력할 게시물의 구간을 계산한다. 
-		int start = (nowPage-1) * pageSize + 1;
+		int start = (nowPage-1) * pageSize;
 		int end = 8;
 		
 		parameterDTO.setStart(start);

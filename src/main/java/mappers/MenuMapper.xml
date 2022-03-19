@@ -40,22 +40,22 @@
   	<insert id="regist" parameterType="menu.MenuVO">
   		INSERT into product(g_code, p_code, p_name, p_price, p_size, p_info, p_ofile, p_sfile)
 			<if test='g_code =="1"'>
-				VALUES (#{g_code}, sq_pizza.nextval, #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code}, nextval(sq_pizza), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
 			<if test='g_code =="2"'>
-				VALUES (#{g_code}, sq_dough.nextval, #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code}, nextval(sq_dough), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
 			<if test='g_code =="3"'>
-				VALUES (#{g_code}, sq_sauce.nextval, #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code}, nextval(sq_sauce), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
 			<if test='g_code =="4"'>
-				VALUES (#{g_code}, sq_topping.nextval, #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code}, nextval(sq_topping), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
 			<if test='g_code =="5"'>
-				VALUES (#{g_code}, sq_side.nextval, #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code}, nextval(sq_side), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
 			<if test='g_code =="6"'>
-				VALUES (#{g_code}, sq_drink.nextval, #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
+				VALUES (#{g_code},nextval(sq_drink), #{p_name}, #{p_price}, #{p_size}, #{p_info}, #{p_ofile}, #{p_sfile})
 			</if>
   	</insert>
 
