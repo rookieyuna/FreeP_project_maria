@@ -42,7 +42,7 @@ public class OrderlistController {
 		int nowPage = (req.getParameter("nowPage")==null || req.getParameter("nowPage").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
-		int start = (nowPage-1) * pageSize +1;
+		int start = (nowPage-1) * pageSize;
 		/* int end = nowPage * pageSize; */
 		int end = 8;
 		

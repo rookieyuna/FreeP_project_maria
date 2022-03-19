@@ -83,7 +83,7 @@ $(function(){
 												<td>${row.or_idx }</td>
 												<td>
 												<c:set var="file" value="${row.rv_sfile1 }" />
-												<c:if test="${file != null }">
+												<c:if test="${file != '' }">
 													<i class="bi-pin-angle-fill" style="font-size: 1rem;"></i>
 												</c:if>
 												</td>

@@ -44,7 +44,7 @@ public class EventController {
 			? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
 		//해당 페이지에 출력할 게시물의 구간을 계산한다. 
-		int start = (nowPage-1) * pageSize + 1;
+		int start = (nowPage-1) * pageSize;
 		int end = pageSize * nowPage;
 
 		ArrayList<BoardDTO> lists =

@@ -79,7 +79,7 @@ $(function(){
 												<td>${row.postdate }</td>
 												<td>
 												<c:set var="file" value="${row.sfile }" />
-												<c:if test="${file != null }">
+												<c:if test="${file != '' }">
 													<i class="bi-pin-angle-fill" style="font-size: 1rem;"></i>
 												</c:if>
 												</td>
