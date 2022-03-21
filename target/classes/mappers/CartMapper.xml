@@ -35,14 +35,14 @@
   	</select>
 
 	<select id="sum1" resultType="int">
-	select nvl(sum(p_price * ct_count),0)
+	select sum(p_price * ct_count)
 			from cart C, product P 
 			where 
     			C.ct_code = P.p_code
    				and C.m_code = #{param1}
 	</select>
 	<select id="sum2" resultType="int">
-	select nvl(sum(d_price * ct_count),0)
+	select sum(d_price * ct_count)
 			from cart C, diy d
 			where 
     			C.ct_code = d.diy_idx

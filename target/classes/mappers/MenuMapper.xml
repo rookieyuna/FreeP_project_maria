@@ -121,6 +121,9 @@
 		    </foreach>
 	</select>
 
+
+	<!-- #원본코드 
+	
 	<insert id="insertCartDiy" parameterType="java.util.HashMap">
 		INSERT INTO DIY(
 		            G_CODE, diy_idx,
@@ -135,5 +138,24 @@
 			SELECT  lastval(sq_diy_idx)			
 		</selectKey>
 
+  	</insert> -->
+
+	<!-- 마리아DB시퀀스 생성안되서 임시변경 3/21 -->
+	<insert id="insertCartDiy" parameterType="java.util.HashMap">
+		INSERT INTO diy(
+		            G_CODE,
+		            DOUGH, SAUCE, TOPPING1, TOPPING2, TOPPING3, TOPPING4, TOPPING5, 
+		            D_NAME, D_PRICE
+		        )VALUES( 
+		            9,
+		            #{dough}, #{sauce}, #{topping1}, #{topping2, jdbcType=INTEGER}, #{topping3, jdbcType=INTEGER}, #{topping4, jdbcType=INTEGER}, #{topping5, jdbcType=INTEGER},
+		            #{d_name}, #{d_price}
+				)
+		<selectKey keyProperty="diy_idx" resultType="Integer" order="AFTER">
+			SELECT diy_idx FROM diy ORDER BY diy_idx DESC LIMIT 1	
+		</selectKey>
   	</insert>
+  	
+  	
+  	
   </mapper>
