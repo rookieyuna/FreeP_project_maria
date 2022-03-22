@@ -70,7 +70,7 @@
                                 </span>
                             </p>
                             <div class="btn-wrap mobile_orderFinish">
-                                <a href="/freepproject/index.do" class="btn-type v4">HOME</a>
+                                <a href="/index.do" class="btn-type v4">HOME</a>
                             </div>
                         </div>
                     </article>

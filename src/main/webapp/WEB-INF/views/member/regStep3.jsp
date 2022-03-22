@@ -65,8 +65,8 @@
                                     로그인 후 쿠폰함으로 제공된 선물을 확인하세요!
                                 </p>
                                 <div class="btn-wrap">
-                                    <a href="/freepproject/index.do" class="btn-type v4">HOME</a>
-                                    <a href="/freepproject/member/login.do" class="btn-type v6">로그인</a>
+                                    <a href="./index.do" class="btn-type v4">HOME</a>
+                                    <a href="./member/login.do" class="btn-type v6">로그인</a>
                                 </div>
                             </div>
                             </div>

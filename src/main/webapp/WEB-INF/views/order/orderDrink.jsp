@@ -144,6 +144,9 @@ function validateForm(form) {
                                                 <!-- <span class="label limit">기간한정</span> -->
                                             </div>
                                         </div>
+                                        <div class="prd-origin">
+                                            <p><span class="kcal info1">${row.p_info }</span></p>
+                                        </div>
                                     </div>
                                     <div class="prd-price">
                                         <div class="price-box">

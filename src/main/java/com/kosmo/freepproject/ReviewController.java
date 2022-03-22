@@ -716,7 +716,7 @@ public class ReviewController {
 	@RequestMapping(value="/mypage/myReviewWriteAction.do", method=RequestMethod.POST)
 	public String myReviewWriteAction(Principal principal, Model model, MultipartHttpServletRequest req) {
 		String referer = req.getHeader("Referer");
-		String refTemp = referer.substring(referer.lastIndexOf("/")+1, referer.indexOf("."));
+		String refTemp = referer.substring(referer.lastIndexOf("/")+1, referer.lastIndexOf("."));
 
 		
 		//dto에 id를 저장
