@@ -3,7 +3,7 @@
 <div class="footer-area">
     <div class="inner-box">
         <div class="footer-order">
-            <img src="/freepproject/images/01brand/brand_logo_type007.png" alt="logo" style="width: 130px;">
+            <img src="/images/01brand/brand_logo_type007.png" alt="logo" style="width: 130px;">
             <!-- <span class="tel">1577-3082</span> -->
         </div>
 

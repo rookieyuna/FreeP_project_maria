@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -99,29 +99,29 @@ function popup(){
 						<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
 							<div class="swiper-wrapper"
 								style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-								<div class="swiper-slide main-favorite-slide-check swiper-slide-active" onclick="location.href='/freepproject/order/orderDIY.do'" style="cursor:pointer">
+								<div class="swiper-slide main-favorite-slide-check swiper-slide-active" onclick="location.href='./order/orderDIY.do'" style="cursor:pointer">
 									<img src="./images/03visual/pizzadiy.png" alt=""
 										style="width: 100px; margin-bottom: 20px;">
 									<h3>DIY피자 주문</h3>
 									<p>나만의 피자를 만들어서<br>
 										지금 바로 주문하세요</p>
-									<a href="/freepproject/order/orderDIY.do">link</a>
+									<a href="./order/orderDIY.do">link</a>
 								</div>
-								<div class="swiper-slide main-favorite-slide-event swiper-slide-next" onclick="location.href='/freepproject/order/orderNormal.do'" style="cursor:pointer">
+								<div class="swiper-slide main-favorite-slide-event swiper-slide-next" onclick="location.href='./order/orderNormal.do'" style="cursor:pointer">
 									<img src="./images/03visual/pizzabasic.png" alt=""
 										style="width: 100px; margin-bottom: 20px;">
 									<h3>일반피자 주문</h3>
 									<p>FreeP만의 프리미엄 피자<br>
 										지금 바로 주문하세요</p>
-									<a href="/freepproject/order/orderNormal.do" class="">link</a>
+									<a href="./order/orderNormal.do" class="">link</a>
 								</div>
-								<div class="swiper-slide main-favorite-slide-station" onclick="location.href='/freepproject/company/searchStore.do'" style="cursor:pointer">
+								<div class="swiper-slide main-favorite-slide-station" onclick="location.href='./company/searchStore.do'" style="cursor:pointer">
 									<img src="./images/03visual/restaurant.png" alt=""
 										style="width: 100px; margin-bottom: 20px;">
 									<h3>매장찾기</h3>
 									<p>우리집 가까이 있는 FreeP를<br>
 										검색해 보세요</p>
-									<a href="/freepproject/company/searchStore.do" class=""></a>
+									<a href="./company/searchStore.do" class=""></a>
 								</div>
 							</div>
 							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -173,7 +173,7 @@ function popup(){
 							<div data-v-65bbb0ce="" class="main-board-item main-board-item-notice">
 								<div class="main-board-item-header">
 									<h3>공지사항</h3>
-									<a href="/freepproject/company/notice.do" class="main-board-open-btn">open</a>
+									<a href="./company/notice.do" class="main-board-open-btn">open</a>
 								</div>
 								<div
 									class="main-board-item-contents swiper-container swiper-container-initialized swiper-container-vertical">
@@ -200,7 +200,7 @@ function popup(){
 							<div data-v-65bbb0ce="" class="main-board-item main-board-item-event">
 								<div class="main-board-item-header">
 									<h3>이벤트</h3>
-									<a href="/freepproject/community/event.do"" class="main-board-open-btn">open</a>
+									<a href="./community/event.do"" class="main-board-open-btn">open</a>
 								</div>
 								<div
 									class="main-board-item-contents swiper-container swiper-container-initialized swiper-container-vertical">
