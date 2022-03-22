@@ -143,7 +143,8 @@ public class BoardController {
 				sqlSession.getMapper(BoardDAOImpl.class).findm_code( req.getParameter("id"));
 		boarddto.setM_code(id);
 		//물리적경로 얻어오기
-		String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
+		//String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
+		String path = "/freepizza/tomcat/webapps/uploads";
 		MultipartFile mfile = null;
 
 		String originalName;
@@ -225,7 +226,8 @@ public class BoardController {
 	public String editAction(Model model, MultipartHttpServletRequest req) {
 
 		//물리적경로 얻어오기
-		String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
+		//String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
+		String path = "/freepizza/tomcat/webapps/uploads";
 		MultipartFile mfile = null;
 
 		String originalName;
@@ -309,8 +311,8 @@ public class BoardController {
 	public String remove(Model model, HttpServletRequest req) {
 
 		//물리적경로 얻어오기
-		String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
-
+		//String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
+		String path = "/freepizza/tomcat/webapps/uploads";
 		try {
 
 			//기존에 있던 파일 uploads 폴더에서 삭제
@@ -338,8 +340,8 @@ public class BoardController {
 	public String removechk(Model model, HttpServletRequest req) {
 
 		//물리적경로 얻어오기
-		String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
-
+		//String path = req.getSession().getServletContext().getRealPath("/resources/uploads");
+		String path = "/freepizza/tomcat/webapps/uploads";
 		
 		String[] bd_no = req.getParameterValues("chk");
 

@@ -78,6 +78,7 @@
 										<img src="../uploads/${dto.sfile }" alt="" width="200px" height="100px"/>
 										
 										
+										
 									</div>								
 								</c:if>
 								</form:form>
