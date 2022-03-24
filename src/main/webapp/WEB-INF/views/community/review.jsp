@@ -175,19 +175,19 @@ function reviewDetail(data, d_name, p_name ,recipe){
 		$(".review-image-wrap").append(
 			'<div><img id="reviewImg1" src="" alt=""></div>' 
 		);
-		document.getElementById("reviewImg1").src="/freepproject/uploads/"+data.rv_sfile1;
+		document.getElementById("reviewImg1").src="../uploads/"+data.rv_sfile1;
 	}
 	if(data.rv_sfile2){
 		$(".review-image-wrap").append(
 			'<div><img id="reviewImg2" src="" alt=""></div>' 
 		);
-		document.getElementById("reviewImg2").src="/freepproject/uploads/"+data.rv_sfile2;
+		document.getElementById("reviewImg2").src="../uploads/"+data.rv_sfile2;
 	}
 	if(data.rv_sfile3){
 		$(".review-image-wrap").append(
 			'<div><img id="reviewImg3" src="" alt=""></div>' 
 		);
-		document.getElementById("reviewImg3").src="/freepproject/uploads/"+data.rv_sfile3;
+		document.getElementById("reviewImg3").src="../uploads/"+data.rv_sfile3;
 	}
 	
 	

@@ -140,7 +140,7 @@
 	</select>
 	
 	<select id="viewMyLike" resultType="String" parameterType="review.LikedReviewDTO">
-		SELECT RV_IDX FROM likedreview WHERE M_CODE=#{m_code}
+		SELECT rv_idx FROM likedreview WHERE M_CODE=#{m_code}
 	</select>
 
 
@@ -157,18 +157,18 @@
 		<!-- 일반 상품의 경우 > 이름만 가져온다 -->
 		<!-- 받는 Code를 통해 일반 상품의 이름 얻어오기-->
 		<select id="getNormalName" parameterType="String" resultType="java.util.HashMap">
-			SELECT p_name, p_code FROM PRODUCT WHERE P_CODE = #{가져온 code}
+			SELECT p_name, p_code FROM product WHERE p_code = #{가져온 code}
 		</select>
 		
 		<!-- DIY상품의 경우 -->
 		<!-- 받는 Code를 통해 DIY테이블의 DIY_IDX와 매칭 시켜 제품의 모든 정보 얻어오기(도우/소스/토핑/정보)-->
 		<select id="getDiyData" parameterType="String" resultType="java.util.HashMap">
-			SELECT * FROM DIY WHERE DIY_IDX = #{가져온 code}
+			SELECT * FROM diy WHERE diy_idx = #{가져온 code}
 		</select>
 		
 			<!--DIY상품 품목들 이름가져오기-->
 			<select id="getDiyName" parameterType="java.util.HashMap" resultType="String">
-				SELECT p_name FROM PRODUCT
+				SELECT p_name FROM product
 				WHERE p_code IN
 				<foreach collection="list" item="value" index="key" open="(" separator="," close=")">
 			    	#{value}
@@ -176,6 +176,6 @@
 			</select>
 			
 	<select id="getDiyChk" parameterType="String" resultType="java.util.HashMap">
-		SELECT * FROM DIY WHERE DIY_IDX=#{param1}
+		SELECT * FROM diy WHERE diy_idx=#{param1}
 	</select>
   </mapper>

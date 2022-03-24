@@ -41,7 +41,7 @@
 		    $(".review-image-wrap").empty().removeClass("slick-initialized slick-slider slick-dotted");
 		    
 			$.ajax({ 
-				url: "/freepproject/community/reviewdetail.do",
+				url: "/community/reviewdetail.do",
 				type:"POST", 
 				beforeSend : function(xhr){
 		    		xhr.setRequestHeader(header, token);
@@ -180,19 +180,19 @@
 				$(".review-image-wrap").append(
 					'<div><img id="reviewImg1" src="" alt=""></div>' 
 				);
-				document.getElementById("reviewImg1").src="/freepproject/uploads/"+data.rv_sfile1;
+				document.getElementById("reviewImg1").src="../uploads/"+data.rv_sfile1;
 			}
 			if(data.rv_sfile2){
 				$(".review-image-wrap").append(
 					'<div><img id="reviewImg2" src="" alt=""></div>' 
 				);
-				document.getElementById("reviewImg2").src="/freepproject/uploads/"+data.rv_sfile2;
+				document.getElementById("reviewImg2").src="../uploads/"+data.rv_sfile2;
 			}
 			if(data.rv_sfile3){
 				$(".review-image-wrap").append(
 					'<div><img id="reviewImg3" src="" alt=""></div>' 
 				);
-				document.getElementById("reviewImg3").src="/freepproject/uploads/"+data.rv_sfile3;
+				document.getElementById("reviewImg3").src="../uploads/"+data.rv_sfile3;
 			}
 			
 			$(".modal2-layer-btn li a").attr("href", "./myReviewEdit.do?or_idx="+data.or_idx);
@@ -212,7 +212,7 @@
 			var token = $("meta[name='_csrf']").attr("content");
 		    var header = $("meta[name='_csrf_header']").attr("content");
 		    $.ajax({ 
-				url: "/freepproject/community/reviewToCart.do",
+				url: "/community/reviewToCart.do",
 				type:"POST", 
 				beforeSend : function(xhr){
 		    		xhr.setRequestHeader(header, token);

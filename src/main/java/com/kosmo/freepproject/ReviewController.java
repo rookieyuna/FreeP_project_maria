@@ -528,7 +528,7 @@ public class ReviewController {
 			? 1 : Integer.parseInt(req.getParameter("nowPage"));
 		
 		//해당 페이지에 출력할 게시물의 구간을 계산한다. 
-		int start = (nowPage-1) * pageSize + 1;
+		int start = (nowPage-1) * pageSize;
 		int end = 8;  
 		
 		//게시물 데이터 읽어오기
@@ -548,7 +548,7 @@ public class ReviewController {
 		
 		//베스트 리뷰 읽어오기
 		ArrayList<ReviewBoardDTO> listsBest =
-				sqlSession.getMapper(ReviewBoardDAOImpl.class).listBest(1, 4);
+				sqlSession.getMapper(ReviewBoardDAOImpl.class).listBest(0, 4);
 		
 		
 		

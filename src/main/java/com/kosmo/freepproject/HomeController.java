@@ -55,7 +55,7 @@ public class HomeController {
 		model.addAttribute("eventLists", eventLists);	
 		
 		ArrayList<ReviewBoardDTO> reviewLists =
-				sqlSession.getMapper(ReviewBoardDAOImpl.class).listBest(1, 4);
+				sqlSession.getMapper(ReviewBoardDAOImpl.class).listBest(0, 4);
 		model.addAttribute("reviewLists", reviewLists);
 		
 		return "index";
@@ -74,7 +74,7 @@ public class HomeController {
 		model.addAttribute("eventLists", eventLists);	
 		
 		ArrayList<ReviewBoardDTO> reviewLists =
-				sqlSession.getMapper(ReviewBoardDAOImpl.class).listBest(1, 4);
+				sqlSession.getMapper(ReviewBoardDAOImpl.class).listBest(0, 4);
 		model.addAttribute("reviewLists", reviewLists);
 		
 		return "index";}
